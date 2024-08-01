@@ -1,17 +1,17 @@
 # Vue Directive for Two-way Binding Pure UI Components
 
-A custom Vue 3 directive that makes two-way binding [Pure UI components](https://shoelace.style) easier.
+A custom Vue 3 directive that makes two-way binding [Pure UI components](https://pureui.xyz) easier.
 
 <details>
 <summary>Instructions for Vue 2 users</summary>
 
-If you're looking for a directive that's compatible with Vue 2, install version 1 of this package:
+If you're looking for a directive that's compatible with Vue 2, install version 1.0.1 of this package:
 
 ```bash
-npm install pure-v-model@1
+npm install pure-v-model@1.0.1
 ```
 
-Then [follow these instructions](https://github.com/shoelace-style/vue-sl-model/tree/77cac5afd36bd6e3321b0a738e3c1751ff006158#vue-directive-for-two-way-binding-shoelace-components) instead.
+Then [follow these instructions](https://github.com/ssjblue197/pure-v-model?tab=readme-ov-file) instead.
 
 </details>
 
@@ -36,7 +36,7 @@ import App from './App.vue'
 const app = createApp(App)
 app.use(PureUIModelDirective)
 
-app.config.compilerOptions.isCustomElement = tag => tag.startsWith('sl-')
+app.config.compilerOptions.isCustomElement = tag => tag.startsWith('p-')
 
 // If using Vite, the above "isCustomElement" needs to be deleted and defined in vite.config.js
 // See below for an example vite.config.js
@@ -44,10 +44,10 @@ app.config.compilerOptions.isCustomElement = tag => tag.startsWith('sl-')
 app.mount('#app')
 ```
 
-Now you can use the `v-sl-model` directive to keep your data in sync!
+Now you can use the `v-p-model` directive to keep your data in sync!
 
 ```html
-<sl-input v-sl-model="name"></sl-input>
+<p-input v-p-model="name"></p-input>
 ```
 
 ## Why is this necessary?
@@ -56,10 +56,10 @@ Currently, there's [no support for v-model on custom elements](https://github.co
 
 ```html
 <!-- This doesn't work -->
-<sl-input v-model="name"></sl-input>
+<p-input v-model="name"></p-input>
 
 <!-- This works, but it's a bit longer -->
-<sl-input :value="name" @input="name = $event.target.value"></sl-input>
+<p-input :value="name" @input="name = $event.target.value"></p-input>
 ```
 
 This utility solves this problem by creating a custom directive that works just like `v-model` but for Pure UI components.
@@ -77,7 +77,7 @@ export default defineConfig({
     vue({
       template: {
         compilerOptions: {
-          isCustomElement: (tag) => tag.startsWith('sl-')
+          isCustomElement: (tag) => tag.startsWith('p-')
         }
       },
     })
