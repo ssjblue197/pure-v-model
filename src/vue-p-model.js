@@ -4,7 +4,7 @@ export default {
         const wm = new WeakMap();
         app.directive("p-model", {
             beforeMount(el, binding, _vnode) {
-                const eventName = el.tagName === "P-SELECT" ? "p-change" : "input";
+                const eventName = (el.tagName === "P-SELECT" || el.tagName === "P-TABLE") ? "p-change" : "input";
                 const inputHandler = function inputHandler(event) {
                     return (binding.instance[binding.value] = event.target.value);
                 };
